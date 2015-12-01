@@ -1,11 +1,14 @@
 package utcc.som.cken.tae.healthrecord;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -57,18 +60,18 @@ public class DetailListView extends AppCompatActivity {
 
         //Get Value from SQLite
         SQLiteDatabase objSqLiteDatabase = openOrCreateDatabase("Health.db", MODE_PRIVATE, null);
-        Cursor objCursor = objSqLiteDatabase.rawQuery("SELECT * FROM recordTABLE WHERE NameUser = " + "'" + userNameString + "'", null);
+        final Cursor objCursor = objSqLiteDatabase.rawQuery("SELECT * FROM recordTABLE WHERE NameUser = " + "'" + userNameString + "'", null);
 
         objCursor.moveToFirst();
-        String[] strDate = new String[objCursor.getCount()];
-        String[] strSleep = new String[objCursor.getCount()];
-        String[] strBreakfast = new String[objCursor.getCount()];
-        String[] strLunch = new String[objCursor.getCount()];
-        String[] strDinner = new String[objCursor.getCount()];
-        String[] strTypeExercise = new String[objCursor.getCount()];
-        String[] strTimeExercise = new String[objCursor.getCount()];
-        String[] strDrinkWater = new String[objCursor.getCount()];
-        String[] strWeight = new String[objCursor.getCount()];
+        final String[] strDate = new String[objCursor.getCount()];
+        final String[] strSleep = new String[objCursor.getCount()];
+        final String[] strBreakfast = new String[objCursor.getCount()];
+        final String[] strLunch = new String[objCursor.getCount()];
+        final String[] strDinner = new String[objCursor.getCount()];
+        final String[] strTypeExercise = new String[objCursor.getCount()];
+        final String[] strTimeExercise = new String[objCursor.getCount()];
+        final String[] strDrinkWater = new String[objCursor.getCount()];
+        final String[] strWeight = new String[objCursor.getCount()];
 
         for (int i=0;i<objCursor.getCount();i++) {
 
@@ -90,7 +93,24 @@ public class DetailListView extends AppCompatActivity {
         MyAdapter objMyAdapter = new MyAdapter(DetailListView.this, strDate);
         dateListView.setAdapter(objMyAdapter);
 
+        dateListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                Intent objIntent = new Intent(DetailListView.this, DetailActivity.class);
+                objIntent.putExtra("Date", strDate[i]);
+                objIntent.putExtra("Sleep", strSleep[i]);
+                objIntent.putExtra("Breakfast", strBreakfast[i]);
+                objIntent.putExtra("Lunch", strLunch[i]);
+                objIntent.putExtra("Dinner", strDinner[i]);
+                objIntent.putExtra("TypeExercise", strTypeExercise[i]);
+                objIntent.putExtra("TimeExercise", strTimeExercise[i]);
+                objIntent.putExtra("DrinkWater", strDrinkWater[i]);
+                objIntent.putExtra("Weight", strWeight[i]);
+                startActivity(objIntent);
+
+            }   // event
+        });
 
     }   // createListView
 
