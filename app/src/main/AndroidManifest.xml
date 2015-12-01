@@ -29,9 +29,9 @@
             android:name=".MyServiceActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".DetailListView" />
-        <activity android:name=".DetailActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".DetailListView" android:screenOrientation="portrait"/>
+        <activity android:name=".DetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
