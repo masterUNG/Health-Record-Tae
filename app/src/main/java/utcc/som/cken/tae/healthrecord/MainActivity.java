@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private UserTABLE objUserTABLE;
     private RecordTABLE objRecordTABLE;
 
-    private String TAG ="Health", userString, passwordString;
+    private String TAG = "Health", userString, passwordString;
 
     private MyDialog objMyDialog = new MyDialog();
 
@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
 
         //Create & Connected Database
@@ -55,9 +54,7 @@ public class MainActivity extends AppCompatActivity {
         bindWidget();
 
 
-
     } //OnCreate
-
 
 
     //Active When Restart
@@ -89,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void synJSONtoSQLite() {
 
-//Setup Policy
+        //Setup Policy
         StrictMode.ThreadPolicy myPolicy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(myPolicy);
 
@@ -138,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                 StringBuilder objStringBuilder = new StringBuilder();   // ตัวที่ทำหน้าที่รวม
                 String strLine = null;  // ตัวแปรที่รับตัวที่ถูกตัดมา
 
-                while ((strLine = objBufferedReader.readLine())!= null ) {  // ถ้า strLine ว่างเปล่า ก็ออกจาก Loop
+                while ((strLine = objBufferedReader.readLine()) != null) {  // ถ้า strLine ว่างเปล่า ก็ออกจาก Loop
 
                     objStringBuilder.append(strLine);   // มีหน้าที่คอยผูก String ไปเรื่อย ๆ
 
@@ -150,10 +147,9 @@ public class MainActivity extends AppCompatActivity {
 
             } catch (Exception e) {
 
-                Log.d(TAG, "strJSON ==> "+e.toString());
+                Log.d(TAG, "strJSON ==> " + e.toString());
 
             }
-
 
 
             // ข้้อที่ 3. Update SQLite     เอา strJSON ที่ได้มา มาใส่ใน SQLite
@@ -179,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
                             String strHeight = object.getString("Height");
                             String strEmail = object.getString("Email");
 
-                            objUserTABLE.addNewUser(strUser, strPassword, strName, strAge, strSex, strWeight, strHeight,strEmail);
+                            objUserTABLE.addNewUser(strUser, strPassword, strName, strAge, strSex, strWeight, strHeight, strEmail);
                             break;
                         default:
                             String strSleep = object.getString("Sleep");
@@ -201,14 +197,13 @@ public class MainActivity extends AppCompatActivity {
 
             } catch (Exception e) {
 
-                Log.d(TAG, "Update Error ==> "+e.toString());
+                Log.d(TAG, "Update Error ==> " + e.toString());
 
             }
 
             intTimes += 1;  // บวกทีละ 1
 
         }   // while
-
 
 
     }   // synJSONtoSQLite
@@ -219,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
         String strPassword = passwordEditText.getText().toString().trim();
 
         //Check Zero
-        if (strUser.equals("") || strPassword.equals("") ) {
+        if (strUser.equals("") || strPassword.equals("")) {
 
             //Have Space
 
@@ -230,7 +225,6 @@ public class MainActivity extends AppCompatActivity {
             checkUserPassword(strUser, strPassword);
 
         }
-
 
 
     } // clickSignIn
@@ -249,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 //Password False
 
-                objMyDialog.errorDialog(MainActivity.this,"Password False", "Please Try Again Password False");
+                objMyDialog.errorDialog(MainActivity.this, "Password False", "Please Try Again Password False");
 
             }
 
