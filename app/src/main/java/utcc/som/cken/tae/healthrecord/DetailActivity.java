@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 public class DetailActivity extends AppCompatActivity {
 
     //Explicit
@@ -23,7 +25,37 @@ public class DetailActivity extends AppCompatActivity {
         //Show TextView
         showTextView();
 
+        //Show Image
+        showImage();
+
     }   // Main Method
+
+    private void showImage() {
+
+        try {
+
+            String strURLbreakfast = getIntent().getStringExtra("Breakfast");
+            Picasso.with(DetailActivity.this).
+                    load(strURLbreakfast).resize(200, 200).into(breakfastImageView);
+
+            String strURLlunch = getIntent().getStringExtra("Lunch");
+            Picasso.with(DetailActivity.this).
+                    load(strURLlunch).resize(200, 200).into(lunchImageView);
+
+            String strURLDinner = getIntent().getStringExtra("Dinner");
+            Picasso.with(DetailActivity.this).
+                    load(strURLDinner).resize(200, 200).into(dinnerImageView);
+
+
+
+        } catch (Exception e) {
+
+            breakfastImageView.setImageResource(R.drawable.icon_question);
+            lunchImageView.setImageResource(R.drawable.icon_question);
+            dinnerImageView.setImageResource(R.drawable.icon_question);
+        }
+
+    }   // showImage
 
     private void showTextView() {
 

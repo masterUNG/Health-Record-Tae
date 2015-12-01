@@ -79,7 +79,7 @@ public class DetailListView extends AppCompatActivity {
             strSleep[i] = objCursor.getString(objCursor.getColumnIndex("Sleep"));
             strBreakfast[i] = objCursor.getString(objCursor.getColumnIndex("Breakfast"));
             strLunch[i] = objCursor.getString(objCursor.getColumnIndex("Lunch"));
-            strDinner[i] = objCursor.getString(objCursor.getColumnIndex("Date"));
+            strDinner[i] = objCursor.getString(objCursor.getColumnIndex("Dinner"));
             strTypeExercise[i] = objCursor.getString(objCursor.getColumnIndex("TypeExercise"));
             strTimeExercise[i] = objCursor.getString(objCursor.getColumnIndex("TimeExercise"));
             strDrinkWater[i] = objCursor.getString(objCursor.getColumnIndex("DrinkWater"));
