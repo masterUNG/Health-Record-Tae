@@ -27,4 +27,13 @@
     <string name="drink">การดื่มน้ำ (แก้ว)</string>
     <string name="weightrecord">น้ำหนัก</string>
     <string name="food">อาหาร</string>
+
+
+    <string name="run">วิ่ง</string>
+    <string name="bicycle">จักยาน</string>
+    <string name="swim">ว่ายน้ำ</string>
+    <string name="yoga">โยคะ</string>
+    <string name="other">อื่นๆ</string>
+
+
 </resources>
