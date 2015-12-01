@@ -5,6 +5,8 @@ import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -21,9 +23,11 @@ import java.io.InputStreamReader;
 public class DetailListView extends AppCompatActivity {
 
     //Explicit
-    private String TAG = "Health";
+    private String TAG = "Health", userNameString;
     private UserTABLE objUserTABLE;
     private RecordTABLE objRecordTABLE;
+    private TextView showNameTextView;
+    private ListView dateListView;
 
 
     @Override
@@ -31,13 +35,29 @@ public class DetailListView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_list_view);
 
+        //Bind Widget
+        bindWidget();
+
         objUserTABLE = new UserTABLE(this);
         objRecordTABLE = new RecordTABLE(this);
 
         //Synchronize mySQL
         synchronizeMySQL();
 
+        //Show Name
+        showName();
+
     }   // Main Method
+
+    private void bindWidget() {
+        showNameTextView = (TextView) findViewById(R.id.txtNameDetail);
+        dateListView = (ListView) findViewById(R.id.listView);
+    }
+
+    private void showName() {
+        userNameString = getIntent().getStringExtra("NameUser");
+        showNameTextView.setText(userNameString);
+    }
 
     private void synchronizeMySQL() {
 
