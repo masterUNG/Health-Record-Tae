@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -42,7 +43,8 @@ public class RecordActivity extends AppCompatActivity {
     //Explicit
     private TextView showTimeTextView;
     private String idUserString, currentTimeString, sleepString = null, breakfastname = null, lunchname = null, dinnername = null,
-            breakfastString = null, lunchString = null, dinnerString = null, timeExerciseString = null, typeExerciseString = null, drinkWaterString = null, weightString = null;
+            breakfastString = null, lunchString = null, dinnerString = null, timeExerciseString = null, typeExerciseString = null,
+            drinkWaterString = null, weightString = null;
     private Spinner sleepSpinner, exerciseSpinner, drinkWaterSpinner;
     private EditText breakfastEditText, lunchEditText, dinnerEditText, timeExerciseEditText, typeExerciseEditText, weightEditText;
     private String strNameUser;
@@ -116,7 +118,7 @@ public class RecordActivity extends AppCompatActivity {
         });
 
 
-    }
+    }   // Main Method
 
     public void onActivityResult(int requestCode, int resultCode
             , Intent returndata) {
@@ -202,26 +204,11 @@ public class RecordActivity extends AppCompatActivity {
             // imageView3.setImageBitmap(imageData3);
         }
 
-    }
+    }   // Active Result
 
 
-    /*{
-        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK) {
-            Uri uri = returndata.getData();
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
-                imageView1.setImageBitmap(bitmap);
-                imageView2.setImageBitmap(bitmap2);
-                imageView3.setImageBitmap(bitmap3);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } */
 
 
-    //onCreate
 
     private String findPath(Uri uri) {
         String imagePath;
@@ -238,7 +225,7 @@ public class RecordActivity extends AppCompatActivity {
 
         }
         return imagePath;
-    }
+    }   // findPath
 
     private void showUser() {
         strNameUser = getIntent().getStringExtra("NameUser");
@@ -468,6 +455,9 @@ public class RecordActivity extends AppCompatActivity {
             ftp.stor(new File("comicbot-latest.png"));*/
 
             // You can also upload from an InputStream, e.g.
+
+            Log.d("11JuneV1", "breakfastStrint ftp ==> " + breakfastString);
+
             ftp.stor(new File(breakfastString));
             ftp.stor(new File(lunchString));
             ftp.stor(new File(dinnerString));
