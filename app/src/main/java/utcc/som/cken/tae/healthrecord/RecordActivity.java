@@ -202,9 +202,9 @@ public class RecordActivity extends AppCompatActivity {
             }
             // Bitmap imageData3 = BitmapFactory.decodeFile(imagePath);
             // imageView3.setImageBitmap(imageData3);
-        }
+        }       // if else Big
 
-    }   // Active Result
+    }   // onActive Result
 
 
 
